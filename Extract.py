@@ -44,13 +44,13 @@ def extract_and_store():
     try:
         log("Tentative de connexion à MinIO")
         minio_client = Minio(
-            "localhost:9000",  # Ajustez si nécessaire à localhost:9000
+            "localhost:9002",  # Ajustez si nécessaire à localhost:9000
             access_key="minio",
             secret_key="minio123",
             secure=False
         )
         
-        bucket_name = "goodair-raw"
+        bucket_name = "msprfive"
         if not minio_client.bucket_exists(bucket_name):
             log(f"Création du bucket {bucket_name}")
             minio_client.make_bucket(bucket_name)

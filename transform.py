@@ -30,7 +30,7 @@ def retrieve_and_display_complete():
             secure=False
         )
         
-        bucket_name = "goodair-raw"
+        bucket_name = "MSPR5"
         
         # Vérification de l'existence du bucket
         if not minio_client.bucket_exists(bucket_name):
