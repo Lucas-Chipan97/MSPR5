@@ -28,7 +28,7 @@ dag = DAG(
     'meteo_villes_pipeline',
     default_args=default_args,
     description='Pipeline météo & qualité d’air',
-    schedule_interval='48 10 * * *',  # Tous les jours à 08h06
+    schedule_interval='0 * * * *',  # Tous les jours à 08h06
     catchup=False
 )
 
@@ -67,4 +67,4 @@ send_success_email = EmailOperator(
     dag=dag
 )
 
-extract_task >> transform_task >> load_task
+extract_task >> transform_task >> load_task >> send_success_email
