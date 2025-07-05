@@ -1,9 +1,3 @@
-"""
-Modèle ML avancé pour prédire la consommation d'eau
-- GradientBoosting uniquement
-- Importance des variables
-- Validation croisée
-"""
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, cross_val_score
@@ -68,28 +62,6 @@ print(f"MAE : {mae:.3f} L/hab")
 print(f"RMSE: {rmse:.3f} L/hab")
 print(f"R²  : {r2:.3f}")
 
-# 6. Visualisation Prédiction vs Réalité
-plt.figure(figsize=(7,5))
-plt.scatter(y_test, y_pred, alpha=0.7)
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')
-plt.xlabel('Consommation réelle (simulée)')
-plt.ylabel('Consommation prédite')
-plt.title('GradientBoosting : Prédiction vs Réalité')
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.savefig('ml_GradientBoosting_prediction_vs_reality.png', dpi=200)
-plt.show()
-
-# 7. Importance des variables
-importances = gb_model.feature_importances_
-indices = np.argsort(importances)[::-1]
-plt.figure(figsize=(8,5))
-plt.title('Importance des variables (GradientBoosting)')
-plt.bar(range(len(features)), importances[indices], align='center')
-plt.xticks(range(len(features)), [features[i] for i in indices], rotation=45, ha='right')
-plt.tight_layout()
-plt.savefig('ml_GradientBoosting_feature_importance.png', dpi=200)
-plt.show()
 
 # 8. Sauvegarder le modèle
 joblib.dump({'model': gb_model, 'label_encoder': le, 'features': features}, 'ml_gb_model.pkl')

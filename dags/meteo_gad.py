@@ -28,7 +28,7 @@ dag = DAG(
     'meteo_villes_pipeline',
     default_args=default_args,
     description='Pipeline météo & qualité d’air',
-    schedule_interval='0 * * * *',  # Tous les jours à 08h06
+    schedule_interval='@hourly',  # Tous les jours à 08h06
     catchup=False
 )
 
